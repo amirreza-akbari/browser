@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Custom Browser</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6c5ce7;
+            --secondary-color: #a29bfe;
+            --dark-color: #2d3436;
+            --light-color: #f5f6fa;
+            --accent-color: #fd79a8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--light-color);
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .logo-container {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.2));
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05) rotate(-5deg);
+        }
+
+        .logo-shine {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 140px;
+            height: 140px;
+            background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+            animation: pulse 3s infinite;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            background: linear-gradient(to right, #ffffff, #fdcb6e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .search-container {
+            position: relative;
+            margin: 50px auto;
+            max-width: 700px;
+            transition: all 0.3s ease;
+        }
+
+        .search-box {
+            position: relative;
+            width: 100%;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 18px 25px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1.1rem;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.95);
+            color: var(--dark-color);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        #searchInput:focus {
+            outline: none;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            transform: translateY(-2px);
+        }
+
+        #searchInput::placeholder {
+            color: #b2bec3;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+            padding: 0 20px;
+        }
+
+        .feature {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .feature::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--accent-color), #e84393);
+            transition: all 0.3s ease;
+        }
+
+        .feature:hover::before {
+            height: 8px;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+
+        .feature h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .feature p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        footer {
+            margin-top: 80px;
+            padding: 20px;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.6; transform: translate(-50%, -50%) scale(0.95); }
+            50% { opacity: 0.9; transform: translate(-50%, -50%) scale(1.05); }
+            100% { opacity: 0.6; transform: translate(-50%, -50%) scale(0.95); }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="particles" id="particles-js"></div>
+
+<div class="container">
+    <div class="logo-container">
+        <div class="logo-shine"></div>
+        <img src="icon/browser.png" alt="Browser Logo" class="logo">
+    </div>
+
+    <h1>Welcome to My Custom Browser</h1>
+    <p class="subtitle">Experience a new way of browsing with ultra-fast speed, high security and modern design. Everything you need to explore the internet is at your fingertips.</p>
+
+    <div class="search-container">
+        <div class="search-box">
+            <i class="search-icon">🔍</i>
+            <input type="text" id="searchInput" placeholder="Enter website address...">
+        </div>
+    </div>
+
+    <div class="features">
+        <div class="feature">
+            <div class="feature-icon">🛡️</div>
+            <h3>Advanced Security</h3>
+            <p>With the latest encryption technologies, we protect your privacy and data. A secure browser for all your online activities.</p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">⚡</div>
+            <h3>Blazing Speed</h3>
+            <p>Optimized for maximum page loading speed. Enjoy smooth experience even on weak connections.</p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">🎨</div>
+            <h3>Smart Design</h3>
+            <p>Beautiful and intelligent user interface that makes browsing a delightful experience. Customizable to your taste.</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    © 2025 Nexus Browser | Developed by Amireza Akbari
+</footer>
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+    // Particles configuration
+    particlesJS("particles-js", {
+        "particles": {
+            "number": {
+                "value": 80,
+                "density": {
+                    "enable": true,
+                    "value_area": 800
+                }
+            },
+            "color": {
+                "value": "#ffffff"
+            },
+            "shape": {
+                "type": "circle",
+                "stroke": {
+                    "width": 0,
+                    "color": "#000000"
+                }
+            },
+            "opacity": {
+                "value": 0.3,
+                "random": true,
+                "anim": {
+                    "enable": true,
+                    "speed": 1,
+                    "opacity_min": 0.1,
+                    "sync": false
+                }
+            },
+            "size": {
+                "value": 3,
+                "random": true,
+                "anim": {
+                    "enable": true,
+                    "speed": 2,
+                    "size_min": 0.1,
+                    "sync": false
+                }
+            },
+            "line_linked": {
+                "enable": true,
+                "distance": 150,
+                "color": "#ffffff",
+                "opacity": 0.2,
+                "width": 1
+            },
+            "move": {
+                "enable": true,
+                "speed": 1,
+                "direction": "none",
+                "random": true,
+                "straight": false,
+                "out_mode": "out",
+                "bounce": false,
+                "attract": {
+                    "enable": true,
+                    "rotateX": 600,
+                    "rotateY": 1200
+                }
+            }
+        },
+        "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+                "onhover": {
+                    "enable": true,
+                    "mode": "grab"
+                },
+                "onclick": {
+                    "enable": true,
+                    "mode": "push"
+                },
+                "resize": true
+            },
+            "modes": {
+                "grab": {
+                    "distance": 140,
+                    "line_linked": {
+                        "opacity": 0.5
+                    }
+                },
+                "push": {
+                    "particles_nb": 4
+                }
+            }
+        },
+        "retina_detect": true
+    });
+
+    // Search functionality with proper encoding
+    document.getElementById('searchInput').addEventListener('keypress', function(e) {
+        if(e.key === 'Enter') {
+            const query = this.value.trim();
+            if(query) {
+                // Check if input is a URL
+                if(isValidUrl(query)) {
+                    window.location.href = fixUrl(query);
+                } else {
+                    // Encode search query properly
+                    const encodedQuery = encodeURIComponent(query);
+                    window.location.href = `https://www.google.com/search?q=${encodedQuery}`;
+                }
+            }
+        }
+    });
+
+    // URL validation function
+    function isValidUrl(string) {
+        try {
+            new URL(string);
+            return true;
+        } catch (_) {
+            return false;
+        }
+    }
+
+    // URL fixing function
+    function fixUrl(url) {
+        if (!url.startsWith('http://') && !url.startsWith('https://')) {
+            return 'https://' + url;
+        }
+        return url;
+    }
+
+    // Search box hover effects
+    const searchContainer = document.querySelector('.search-container');
+    const searchInput = document.getElementById('searchInput');
+
+    searchInput.addEventListener('focus', () => {
+        searchContainer.style.transform = 'scale(1.02)';
+    });
+
+    searchInput.addEventListener('blur', () => {
+        searchContainer.style.transform = 'scale(1)';
+    });
+</script>
+</body>
+</html>

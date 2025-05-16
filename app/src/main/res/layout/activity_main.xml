@@ -1,0 +1,69 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#121212">
+
+
+    <LinearLayout
+        android:id="@+id/urlBar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:background="@drawable/bottom_bar_bg"
+        android:elevation="8dp"
+        android:gravity="center_vertical">
+
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/b"
+        android:background="@drawable/nav_button_bg"
+        android:contentDescription="قبلی"
+        android:layout_marginEnd="4dp" />
+
+
+        <ImageButton
+            android:id="@+id/forwardButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/f"
+        android:background="@drawable/nav_button_bg"
+        android:contentDescription="بعدی"
+        android:layout_marginEnd="8dp" />
+
+
+        <EditText
+            android:id="@+id/urlInput"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:hint="🔍 Search or site address"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#CCCCCC"
+            android:background="@drawable/url_bar_rounded"
+            android:paddingHorizontal="16dp"
+            android:textSize="13sp"
+            android:inputType="textUri"
+            android:fontFamily="sans-serif-medium" />
+
+
+        <ImageButton
+            android:id="@+id/goButton"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/search"
+        android:background="@drawable/go_button_bg"
+        android:contentDescription="برو"
+        android:layout_marginStart="8dp" />
+    </LinearLayout>
+
+
+    <WebView
+        android:id="@+id/webView"
+        android:layout_below="@id/urlBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</RelativeLayout>
