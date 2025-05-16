@@ -1,4 +1,4 @@
-# 🌟 **Nexus Web** - مرورگر فوق‌سریع اندروید
+# 🚀 **Nexus Web** - Ultra-Fast Android Browser
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/12345678/123456789-abcdef00-123456.png" alt="Nexus Banner" width="400">
@@ -8,15 +8,15 @@
   ![License](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge)
 </div>
 
-## ✨ **چرا Nexus Web؟**
-- ⚡ **سریع‌ترین موتور پردازش** با فشرده‌سازی پیشرفته
-- 🔒 **امنیت نظامی** با رمزنگاری AES-256
-- 🎨 **طراحی فلت مدرن** با پشتیبانی از Material You
-- 🤖 **دستیار هوشمند** با قابلیت درک گفتار فارسی
+## ✨ **Why Nexus Web?**
+- ⚡ **Lightning-fast browsing** with quantum compression
+- 🔒 **Military-grade security** with AES-256 encryption
+- 🎨 **Sleek Material You design** with dynamic theming
+- 🤖 **AI-powered assistant** with natural language processing
 
-## 🚀 **ویژگی‌های انقلابی**
+## 🚀 **Breakthrough Features**
 ```kotlin
-// کد نمونه - فعال‌سازی حالت توربو
+// Sample code - Enabling Turbo Mode
 webView.enableTurboMode(
     adBlock = true,
     dataSaver = true,
