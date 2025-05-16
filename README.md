@@ -1,7 +1,7 @@
 # 🚀 **Nexus Web** - Ultra-Fast Android Browser
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/12345678/123456789-abcdef00-123456.png" alt="Nexus Banner" width="400">
+
   
   ![GitHub Release](https://img.shields.io/github/v/release/amirezaakbari/nexus-web?style=for-the-badge&color=6c5ce7)
   ![Downloads](https://img.shields.io/github/downloads/amirezaakbari/nexus-web/total?style=for-the-badge&color=fd79a8)
